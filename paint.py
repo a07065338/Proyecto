@@ -1,5 +1,4 @@
-"""Paint, for drawing shapes.
-
+Paint, for drawing shapes
 Exercises
 
 1. Add a color.
@@ -45,16 +44,39 @@ def circulo(start, end):
 
     circle(radius)
 
-    end_fill()
 
 def rectangle(start, end):
     """Draw rectangle from start to end."""
-    pass  # TODO
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    
+    length = end.x - start.x
+    width = end.y - start.y
+
+    for _ in range(2):  # El bucle para dibujar 2 lados de longitud y 2 de anchura
+        forward(length)  # Dibuja el lado más largo
+        left(90)
+        forward(width)   # Dibuja el lado más corto
+        left(90)
+
+    end_fill()
 
 
 def triangle(start, end):
-    """Draw triangle from start to end."""
-    pass  # TODO
+    """Draw a triangle from start to end."""
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    for _ in range(3):
+        forward(end.x - start.x)  # Dibuja el lado del triángulo
+        left(120)  # Gira 120 grados para formar los ángulos del triángulo equilátero
+
+    end_fill()
 
 
 def tap(x, y):
@@ -91,4 +113,4 @@ onkey(lambda: store('shape', square), 's')
 onkey(lambda: store('shape', circulo), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
 onkey(lambda: store('shape', triangle), 't')
-done()
+dot()
