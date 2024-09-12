@@ -40,7 +40,7 @@ def move():
         targets.append(target)
 
     for target in targets:
-        target.x -= 0.5
+        target.x -= 0.25 #Asi es mas rapido
 
     if inside(ball):
         speed.y -= 0.35 # cambio de velocidad para simular gravedad
@@ -57,7 +57,7 @@ def move():
 
     draw()
 
-    ontimer(move, 50)
+    ontimer(move, 25)
 
 setup(420, 420, 370, 0)  #configura el tamaño de la ventana
 hideturtle()
