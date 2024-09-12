@@ -14,7 +14,7 @@ from turtle import *
 
 from freegames import floor, vector #se importan las librerías necesarias para el código
 
-state = {'score': 0}.   #puntaje  de jugador
+state = {'score': 0}   #puntaje  de jugador
 path = Turtle(visible=False) # dibujar el mapa
 writer = Turtle(visible=False)
 aim = vector(5, 0)   # direccion de pacman
