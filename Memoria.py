@@ -8,6 +8,7 @@ car = path('car.gif')  # imagen importada
 tiles = list(range(32)) * 2 # 32 pares de tarjetas
 state = {'mark': None}
 hide = [True] * 64  # ayuda a saber si una tareta está oculta
+taps = 0  #contador de taps
 
 
 def square(x, y):
@@ -35,6 +36,8 @@ def xy(count):
 
 def tap(x, y):
 # actualiza el estado de las tarjetas basado en clic
+    global taps
+    taps += 1  # se aumenta el contador
     spot = index(x, y)
     mark = state['mark']
 
@@ -44,6 +47,9 @@ def tap(x, y):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+def all_revealed():
+# regresa True cuando todos los cuadros se destapan
+    return all(not hidden for hidden in hide)
 
 
 def draw():
@@ -66,6 +72,15 @@ def draw():
         goto(x + 2, y)
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
+
+    goto(-180, 180)
+    color("black")
+    write(f"Taps: {taps}", font=("Arial", 20, "normal"))
+
+    if all_revealed():
+        goto(-100,0)
+        color("green")
+        write("Lo lograste! fr", font=("Arial", 30, "bold"))
 
     update()
     ontimer(draw, 100)
