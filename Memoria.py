@@ -6,6 +6,7 @@ from freegames import path
 
 car = path('car.gif')  # imagen importada
 tiles = list(range(32)) * 2 # 32 pares de tarjetas
+#Se puede cambiar esta lista por una de caracteres y letras que tengan 32 caracteres para hacerlo mas facil.
 state = {'mark': None}
 hide = [True] * 64  # ayuda a saber si una tareta está oculta
 taps = 0  #contador de taps
@@ -69,7 +70,7 @@ def draw():
     if mark is not None and hide[mark]:
         x, y = xy(mark)
         up()
-        goto(x + 2, y)
+        goto(x , y) #Asi esta centrado
         color('black')
         write(tiles[mark], font=('Arial', 30, 'normal'))
 
