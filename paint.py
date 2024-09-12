@@ -1,4 +1,4 @@
-Paint, for drawing shapes
+"""Paint, for drawing shapes
 Exercises
 
 1. Add a color.
