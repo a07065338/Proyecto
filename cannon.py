@@ -45,6 +45,12 @@ def move():
     if inside(ball):
         speed.y -= 0.35 # cambio de velocidad para simular gravedad
         ball.move(speed)
+    dupe = targets.copy()
+    targets.clear()
+
+    for target in dupe:
+        if abs(target - ball) > 13:
+            targets.append(target)
 
     for target in targets:
         if not inside(target):  #en caso de que el objetivo salga de rango
