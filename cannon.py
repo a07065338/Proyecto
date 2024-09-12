@@ -43,21 +43,19 @@ def move():
         target.x -= 0.5
 
     if inside(ball):
-        speed.y -= 0.35
+        speed.y -= 0.35 # cambio de velocidad para simular gravedad
         ball.move(speed)
 
-    dupe = targets.copy()
-    targets.clear()
+    for target in targets:
+        if not inside(target):  #en caso de que el objetivo salga de rango
+            target.x = 200       #reposicionar en el borde derecho
+            target.y = randrange(-150, 150)  # Nueva posición aleatoria
 
-    for target in dupe:
-        if abs(target - ball) > 13:
-            targets.append(target)
+    if not inside(ball):  # si la bola sale de la pantalla la guarda en un punto en específico afuera
+        ball.x = -200
+        ball.y = -200
 
     draw()
-
-    for target in targets:
-        if not inside(target):
-            return
 
     ontimer(move, 50)
 
