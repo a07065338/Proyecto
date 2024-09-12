@@ -51,9 +51,28 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        numcol = randrange(1,5)
+        if numcol == 1:
 
-    square(food.x, food.y, 9, 'green')
+            square(body.x, body.y, 9, 'black')
+            square(food.x, food.y, 9, 'green')
+        if numcol == 2:
+
+            square(body.x, body.y, 9, 'green')
+            square(food.x, food.y, 9, 'blue')
+        if numcol == 3:
+
+            square(body.x, body.y, 9, 'yellow')
+            square(food.x, food.y, 9, 'purple')
+        if numcol == 4:
+
+            square(body.x, body.y, 9, 'blue')
+            square(food.x, food.y, 9, 'yellow')
+        if numcol == 5:
+
+            square(body.x, body.y, 9, 'purple')
+            square(food.x, food.y, 9, 'black')
+
     update()
     #Aqui es donde se modifica la velocidad entre mayor sea mas lento es y viceversa
     ontimer(move, 150)
