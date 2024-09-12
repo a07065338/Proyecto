@@ -1,25 +1,25 @@
 from random import randrange
 from turtle import *
 from freegames import vector
+#se importaron las librerías necesarias para gráficos (turtle) y vector (freegames) para las posiciones
 
-ball = vector(-200, -200)
-speed = vector(0, 0)
+ball = vector(-200, -200) # posición de la bola
+speed = vector(0, 0) # velocidad inicial, al ser tiro parabólico es 0
 targets = []
 
 def tap(x, y):
-    "Respond to screen tap."
-    if not inside(ball):
+    # responde a un clic
+    if not inside(ball):  #reinicia la posición de la bola
         ball.x = -199
         ball.y = -199
         speed.x = (x + 200) / 25
         speed.y = (y + 200) / 25
 
-def inside(xy):
-    "Return True if xy within screen."
+def inside(xy):    # verifica si la coordenada está dentro de los límites
     return -200 < xy.x < 200 and -200 < xy.y < 200
 
 def draw():
-    "Draw ball and targets."
+    # dibuja la bola y los objetos
     clear()
 
     for target in targets:
@@ -33,7 +33,7 @@ def draw():
     update()
 
 def move():
-    "Move ball and targets."
+    # mueve la bola y los objetivos
     if randrange(40) == 0:
         y = randrange(-150, 150)
         target = vector(200, y)
@@ -61,7 +61,7 @@ def move():
 
     ontimer(move, 50)
 
-setup(420, 420, 370, 0)
+setup(420, 420, 370, 0)  #configura el tamaño de la ventana
 hideturtle()
 up()
 tracer(False)
